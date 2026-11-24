@@ -28,3 +28,6 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Games are defined only in `src/data/games.ts`; tiles and `/spiel/$slug` pages derive from it so adding an entry needs no other change.

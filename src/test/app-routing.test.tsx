@@ -15,3 +15,10 @@ describe("App routing", () => {
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
 });
+
+describe("Spielseiten", () => {
+  it("matcht /spiel/spiel-a auf die Spielvorlage", () => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+    expect(router.matchRoutes("/spiel/spiel-a").at(-1)?.routeId).toBe("/spiel/$slug");
+  });
+});
