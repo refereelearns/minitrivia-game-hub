@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { GameTile } from "@/components/GameTile";
 import { games } from "@/data/games";
 
 export const Route = createFileRoute("/")({
@@ -15,23 +16,19 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <main className="mx-auto min-h-screen max-w-3xl px-4 py-8">
-      <header className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight">minitrivia</h1>
-      </header>
-      <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-        {games.map((g) => (
-          <li key={g.slug}>
-            <Link
-              to="/spiel/$slug"
-              params={{ slug: g.slug }}
-              className="flex aspect-square items-center justify-center rounded-lg border bg-card p-4 text-center font-medium text-card-foreground transition-colors hover:bg-accent"
-            >
-              {g.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </main>
+    <div className="page-shell">
+      <main className="mx-auto max-w-3xl px-5 py-8">
+        <header className="mb-10">
+          <h1 className="font-rounded text-4xl font-extrabold tracking-tight text-ink">minitrivia</h1>
+        </header>
+        <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6">
+          {games.map((g) => (
+            <li key={g.slug}>
+              <GameTile game={g} />
+            </li>
+          ))}
+        </ul>
+      </main>
+    </div>
   );
 }

@@ -31,3 +31,4 @@ use the editor.
 
 ## Project rules
 - Games are defined only in `src/data/games.ts`; tiles and `/spiel/$slug` pages derive from it so adding an entry needs no other change.
+- Tile color/shape come from `src/data/game-themes.ts` by list position, with literal class maps so Tailwind detects them.
