@@ -2,7 +2,7 @@
 
 Erstelle in einem Durchgang das Grundgerüst für „minitrivia“, eine mobile-first Website, auf der später viele kleine Daily-Trivia-Spiele an einem Ort erreichbar sein sollen. Jetzt geht es ausschließlich um die Struktur.
 
-Orientiere dich bei der Navigation an der Idee einer zentralen Spieleübersicht mit direktem Einstieg in jedes Spiel. Splash dient als strukturelle Referenz. Verwende für minitrivia ein schlichtes, eigenständiges Layout.
+Orientiere dich bei der Navigation an der Idee einer zentralen Spieleübersicht mit direktem Einstieg in jedes Spiel. Splash dient als strukturelle Referenz. Verwende für minitrivia ein schlichtes, eigenständiges Layout. Das Spiel sollte auf Englisch sein.
 
 Baue genau zwei Ansichten:
 
