@@ -18,7 +18,7 @@ function WorldLayout() {
       <LandscapeLayer active={w.id} />
       {/* Layer 3: real UI */}
       <header className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 pt-4 sm:px-8 sm:pt-6">
-        <Link to="/$world" params={{ world: w.id }} className="font-display text-2xl font-bold tracking-tight outline-none focus-visible:underline sm:text-3xl">
+        <Link to="/" aria-label="minitrivia — Choose your world" className="font-display text-2xl font-bold tracking-tight outline-none focus-visible:underline sm:text-3xl">
           minitrivia
         </Link>
         <WorldSwitch active={w.id} />

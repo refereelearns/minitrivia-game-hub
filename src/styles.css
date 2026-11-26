@@ -161,3 +161,17 @@
     color: var(--color-foreground);
   }
 }
+
+::view-transition-group(portal-olympus),
+::view-transition-group(portal-hades) {
+  animation-duration: 650ms;
+  animation-timing-function: cubic-bezier(.22, .68, .16, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0s !important;
+  }
+}

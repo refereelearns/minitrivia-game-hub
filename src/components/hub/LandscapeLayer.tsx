@@ -9,7 +9,7 @@ export function LandscapeLayer({ active }: { active: WorldId }) {
         const w = worlds[id];
         return (
           <WorldTransitionLayer key={id} active={id === active} config={w.transition}>
-            <picture>
+            <picture className="block h-full" style={{ viewTransitionName: id === active ? `portal-${id}` : undefined }}>
               <source media="(min-aspect-ratio: 4/5)" srcSet={w.landscape.wide} />
               <img
                 src={w.landscape.tall}
