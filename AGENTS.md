@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## minitrivia structure
+- Games live only in `src/games/catalog.ts`; world pages filter it by `world` — never keep per-world game lists (single source of truth).
+- Each world's name, colors, landscape and transition live in `src/worlds/config.ts`; the world-change animation is isolated in `src/worlds/transitions.tsx` so it can be swapped without touching routes or games.
+- Landscape, foreground and UI are separate layers; text and controls are never baked into images.
+- Route context must stay serializable: look up catalog entries (which hold components) by id in the component, not in `beforeLoad`.

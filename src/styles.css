@@ -30,6 +30,14 @@
  */
 
 @theme inline {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-world-ink: var(--world-ink);
+  --color-world-ink-muted: var(--world-ink-muted);
+  --color-world-accent: var(--world-accent);
+  --color-world-accent-ink: var(--world-accent-ink);
+  --color-world-surface: var(--world-surface);
+  --color-world-surface-ink: var(--world-surface-ink);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
