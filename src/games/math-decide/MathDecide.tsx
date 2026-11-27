@@ -6,7 +6,11 @@ import "./game.css";
 const key = (day: string) => "minitrivia:math-decide:v1:" + day;
 function read(day: string): Run | null {
   const saved = localStorage.getItem(key(day));
-  return saved ? JSON.parse(saved) : null;
+  if (!saved) return null;
+  const run: Run = JSON.parse(saved);
+  // Keep the original start time if an older 15-second round is resumed.
+  if (run.deadline !== null) run.deadline += limit - (run.roundMs ?? 15000);
+  return { ...run, roundMs: limit };
 }
 function Formula({ text }: { text: string }) {
   const [base, exponent] = text.split("^");
@@ -15,6 +19,24 @@ function Formula({ text }: { text: string }) {
       {base}
       {exponent && <sup>{exponent}</sup>}
     </>
+  );
+}
+function breakdown(points: number) {
+  return points
+    ? `50 for accuracy + ${points - 50} for speed = ${points} pts`
+    : "0 for accuracy + 0 for speed = 0 pts";
+}
+
+function ScoringGuide() {
+  return (
+    <details className="md-scoring">
+      <summary>How scoring works</summary>
+      <p>
+        A correct answer earns 50 points. The speed bonus starts at 25 and decreases evenly to 0
+        over 10 seconds, rounded to the nearest whole point. Wrong answers and timeouts earn 0.
+      </p>
+      <p>Example: answer correctly in 4 seconds → 50 + 15 = 65 points.</p>
+    </details>
   );
 }
 type Move = "start" | "next" | number | null;
@@ -65,7 +87,13 @@ export function MathDecide() {
           return sync();
         let next: Run;
         if (action === "start" && !saved) {
-          next = { day, questions: questionsFor(day), answers: [], deadline: at + limit };
+          next = {
+            day,
+            questions: questionsFor(day),
+            answers: [],
+            roundMs: limit,
+            deadline: at + limit,
+          };
         } else if (saved && !done(saved) && action === "next" && saved.deadline === null) {
           next = { ...saved, deadline: at + limit };
         } else if (
@@ -127,7 +155,9 @@ export function MathDecide() {
     return (
       <section className="md-game">
         <p className="md-date">Daily challenge · {day}</p>
-        <p>15 comparisons. Three lives. Pick a card or use ← and → within 15 seconds.</p>
+        <p>
+          15 comparisons. Three lives. Pick a card or use ← and → within {limit / 1000} seconds.
+        </p>
         <p>
           Earn 50 points per correct answer and up to 25 more for speed. A wrong answer or timeout
           costs one heart.
@@ -136,6 +166,7 @@ export function MathDecide() {
           Play today’s challenge →
         </button>
         <small>One run per browser. New questions at midnight in Berlin.</small>
+        <ScoringGuide />
       </section>
     );
 
@@ -160,6 +191,7 @@ export function MathDecide() {
                   {i + 1}. {a.points ? "Correct" : a.side === null ? "Timed out" : "Incorrect"}
                 </b>{" "}
                 · {(a.elapsed / 1000).toFixed(1)} s · +{a.points} pts
+                <div>{breakdown(a.points)}</div>
                 <p>{q.prompt}</p>
                 <div>
                   <Formula text={q.labels[0]} /> vs. <Formula text={q.labels[1]} />
@@ -181,6 +213,7 @@ export function MathDecide() {
             );
           })}
         </ol>
+        <ScoringGuide />
       </section>
     );
 
@@ -236,12 +269,14 @@ export function MathDecide() {
                 ? "Time’s up · one life lost"
                 : "Incorrect · one life lost"}
           </b>
+          <p>{breakdown(last.points)}</p>
           <p>{q.solution}</p>
           <button className="md-action" onClick={() => void move("next")}>
             Next round →
           </button>
         </div>
       )}
+      <ScoringGuide />
     </section>
   );
 }

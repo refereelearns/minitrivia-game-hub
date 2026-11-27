@@ -43,7 +43,7 @@ export function questionsFor(day: string): Question[] {
   );
 }
 
-export const limit = 15000;
+export const limit = 10000;
 export interface Answer {
   side: number | null;
   elapsed: number;
@@ -54,6 +54,7 @@ export interface Run {
   questions: Question[];
   answers: Answer[];
   deadline: number | null;
+  roundMs?: number;
 }
 export function lives(run: Run) {
   return 3 - run.answers.filter((a) => a.points === 0).length;

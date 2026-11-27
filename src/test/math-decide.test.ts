@@ -28,12 +28,12 @@ describe("Math Decide", () => {
       day: "2026-11-27",
       questions: bank.map((row) => row[0]!),
       answers: [],
-      deadline: 15000,
+      deadline: 10000,
     };
     run = answer(run, 1, 3000);
-    expect(run.answers[0]!.points).toBe(70);
+    expect(run.answers[0]!.points).toBe(68);
     expect(answer(run, 0, 5000)).toBe(run);
-    for (let i = 0; i < 3; i++) run = answer({ ...run, deadline: 15000 }, 0, 15000);
+    for (let i = 0; i < 3; i++) run = answer({ ...run, deadline: 10000 }, 0, 10000);
     expect(lives(run)).toBe(0);
     expect(done(run)).toBe(true);
     expect(run.answers[3]!.side).toBeNull();

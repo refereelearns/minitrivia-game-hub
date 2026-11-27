@@ -78,22 +78,19 @@
 }
 .md-clock.urgent {
   color: #ff9aa8;
-  background: #401a22;
-  animation: md-warning 0.5s ease-out 1;
+  background: #741e32;
+  box-shadow: 0 0 12px #ff36585c;
+  animation: md-warning 0.4s ease-in-out infinite;
 }
 .md-clock.urgent progress {
   color: #ff3658;
 }
 @keyframes md-warning {
-  20% {
-    background: #9b243a;
-    transform: translateX(-3px);
+  25% {
+    transform: translate(-2px, -1px) rotate(-0.6deg);
   }
-  45% {
-    transform: translateX(3px);
-  }
-  70% {
-    transform: translateX(-2px);
+  75% {
+    transform: translate(2px, -1px) rotate(0.6deg);
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -159,4 +156,17 @@
 .md-review summary {
   cursor: pointer;
   color: #ffb194;
+}
+
+.md-scoring {
+  border-top: 1px solid #78656b;
+  padding-top: 0.75rem;
+  font-size: 0.9rem;
+}
+.md-scoring summary {
+  cursor: pointer;
+  color: #ffb194;
+}
+.md-scoring p {
+  margin-top: 0.5rem;
 }

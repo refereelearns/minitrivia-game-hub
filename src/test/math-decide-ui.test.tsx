@@ -15,7 +15,7 @@ it("warns at three seconds, restores a timeout, and locks the completed daily ru
   const first = render(<MathDecide />);
   fireEvent.click(screen.getByText(/Play today/));
   act(() => {
-    vi.advanceTimersByTime(12000);
+    vi.advanceTimersByTime(7040);
   });
   expect(document.querySelector(".md-clock.urgent")).toBeTruthy();
   first.unmount();
@@ -54,6 +54,7 @@ it("shows the score and all 15 solutions after a perfect run", () => {
     fireEvent.click(document.querySelectorAll(".md-choices button")[winner(q)]!);
   });
   expect(screen.getByText("Challenge complete")).toBeTruthy();
-  expect(screen.getByText("1050 pts")).toBeTruthy();
+  expect(screen.getAllByText("50 for accuracy + 18 for speed = 68 pts")).toHaveLength(15);
+  expect(screen.getByText("1020 pts")).toBeTruthy();
   expect(document.querySelectorAll(".md-review details")).toHaveLength(15);
 });
