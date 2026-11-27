@@ -58,14 +58,15 @@ export const worlds: Record<WorldId, WorldConfig> = {
       accentInk: "oklch(0.98 0.01 90)",
       surface: "oklch(0.98 0.01 240 / 0.78)",
       surfaceInk: "oklch(0.22 0.04 255)",
-      scrim: "linear-gradient(180deg, oklch(0.93 0.03 240 / 0.75) 0%, oklch(0.93 0.03 240 / 0.15) 45%, oklch(0.3 0.04 250 / 0.35) 100%)",
+      scrim:
+        "linear-gradient(180deg, oklch(0.93 0.03 240 / 0.75) 0%, oklch(0.93 0.03 240 / 0.15) 45%, oklch(0.3 0.04 250 / 0.35) 100%)",
     },
     transition: { kind: "fade", durationMs: 700 },
   },
   hades: {
     id: "hades",
     name: "Hades",
-    title: "Descend into the deep",
+    title: "Dwelve into the deep",
     tagline: "Cold logic, slow embers. Every answer takes you further down.",
     landscape: {
       wide: hadesWide.url,
@@ -80,7 +81,8 @@ export const worlds: Record<WorldId, WorldConfig> = {
       accentInk: "oklch(0.98 0.01 30)",
       surface: "oklch(0.2 0.01 30 / 0.72)",
       surfaceInk: "oklch(0.95 0.01 30)",
-      scrim: "linear-gradient(180deg, oklch(0.12 0.01 30 / 0.8) 0%, oklch(0.12 0.01 30 / 0.2) 45%, oklch(0.1 0.02 25 / 0.6) 100%)",
+      scrim:
+        "linear-gradient(180deg, oklch(0.12 0.01 30 / 0.8) 0%, oklch(0.12 0.01 30 / 0.2) 45%, oklch(0.1 0.02 25 / 0.6) 100%)",
     },
     transition: { kind: "fade", durationMs: 900 },
   },
