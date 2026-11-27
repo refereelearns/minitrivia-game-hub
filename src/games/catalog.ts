@@ -7,6 +7,8 @@ import type { ComponentType } from "react";
 import type { WorldId } from "@/worlds/config";
 import { PlaceholderGame } from "./modules/PlaceholderGame";
 
+import { MathDecide } from "./math-decide/MathDecide";
+
 export interface GameViewProps {
   game: GameEntry;
 }
@@ -32,10 +34,10 @@ export const catalog: GameEntry[] = [
   {
     id: "math-decide",
     name: "Math Decide",
-    description: "Higher or lower? Decide fast. Placeholder — game coming soon.",
+    description: "Pick the larger value before time runs out. A fresh challenge every day.",
     category: "Numbers",
     world: "hades",
-    view: PlaceholderGame,
+    view: MathDecide,
   },
 ];
 
